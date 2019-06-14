@@ -1,10 +1,10 @@
 Add your answers to the questions below.
 
 1. What is the runtime complexity of your ring buffer's `append` method?
-O(c) relies only on accessing an list element by index
+O(1) relies only on accessing an list element by index
 
 2. What is the space complexity of your ring buffer's `append` function?
-O(c) - once the list is created, its size does not change
+O(1) - once the list is created, its size does not change
 
 3. What is the runtime complexity of your ring buffer's `get` method?
 O(n) - my implementation iterates over every item to filter out None's
