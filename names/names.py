@@ -29,13 +29,43 @@ duplicates = []
 #         duplicates.append(name)
 
 # dictionary ~0.005s
-dictionary_1 = {}
-for name in names_1:
-    dictionary_1[name] = name
+# dictionary_1 = {}
+# for name in names_1:
+#     dictionary_1[name] = name
+#
+# for name in names_2:
+#     if name in dictionary_1:
+#         duplicates.append(name)
 
+# Stretch Solution ~0.06s
+# sort the array first
+names_1.sort()
+
+# binary search it
 for name in names_2:
-    if name in dictionary_1:
-        duplicates.append(name)
+    low = 0
+    high = len(names_1) - 1
+    # binary search
+    while high - low > -1:
+        mid = low + (high - low) // 2
+        if names_1[mid] == name:
+            duplicates.append(name)
+            break
+
+        if high - low == 1 or high == low:
+          # we were down to the last element, if it's not here
+          # break
+          if names_1[high] != name:
+            break
+          else:
+              duplicates.append(name)
+              break
+        elif name > names_1[mid]:
+          low = mid
+        else:
+          high = mid
+
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
